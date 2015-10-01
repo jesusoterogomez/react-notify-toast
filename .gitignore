@@ -1,0 +1,8 @@
+dist
+node_modules
+bower_components
+.sublime*
+sassdoc
+*.DS_Store
+npm-debug.log
+*.log
