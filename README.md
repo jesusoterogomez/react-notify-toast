@@ -1,4 +1,4 @@
-# React Notification Toasts for React.js.
+# Toast Notifications for React.js.
 
 ## Installation
 
@@ -20,8 +20,11 @@ To include this project you need to require the module by using CommonJS syntax 
 ```js
 // ES6
 import Notifications, {notify} from 'react-notify-toast'; 
-// Notifications is the default export. It represents the React Component that contains the notifications.
-// You can give the default export any name, but in this example it will be referenced as Notifications
+/* Notifications is the default export.
+   It represents the React Component that contains the notifications.
+   
+   You can give the default export any name
+   but in this example it will be referenced as Notifications */
 
 ```
 
