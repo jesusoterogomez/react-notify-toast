@@ -1,46 +1,71 @@
-# Penneo Javascript SDK
+# React Notification Toasts for React.js.
 
-## Installing dependencies
-
-This application's dependencies are managed by [npm](https://www.npmjs.org/), before proceding with the cli commands below, make sure you have [node.js](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed.
-
-####Install project dependencies
-npm handles the installation of the dependencies within the project. Check the list of dependencies in `package.json` in the project root, Install the dependencies with the following command.
-
-```sh
-$ npm install
-```
-
-## How to use
+## Installation
 
 The recommended way to include this sdk into your project is by using npm. Install it into your project as a dependency with
 
 ```sh
-$ npm install penneo-js-sdk --save
+$ npm install react-notify-toast --save
 ```
 
-Then either use the commands on the `node` execution context (server) or use a bundler tool like `Browserify` or `Webpack` to include the modules in the browser context.
+## How to use
+
+To include the modules in the browser context use a bundler tool like `Browserify` or `Webpack`.
 
 ## Import into your project
 
-To include this project you need to require the module by using CommonJS syntax and then calling the available functions in the SDK.
+To include this project you need to require the module by using CommonJS syntax or ES6 Modules Syntax (recommended).
 
-Every function needs to run with a callback that will return the response. You can check the different types of responses in the documentation
-
-```js
-var penneo = require('./path/to/sdk');
-
-penneo.authenticate(function(response){
-	console.log('authenticated');
-});
-```
-
-If you want to use the new ES6 syntax, you need a tool like Babel, that transpiles your code to ES5 and builds a distribution version. the same example outlined above, in conjunction with `Browserify` would result in
 
 ```js
-import penneo from 'penneo-js-sdk' // import directly from node_module
+// ES6
+import Notifications, {notify} from 'react-notify-toast'; 
+// Notifications is the default export. It represents the React Component that contains the notifications.
+// You can give the default export any name, but in this example it will be referenced as Notifications
 
-penneo.authenticate(function(response){
-	console.log('authenticated');
-});
 ```
+
+For best results, render the `Notifications` component in the higher DOM node possible, such as:
+
+```js
+// react's app render function
+render() {
+	return (
+		<div className='main'>
+			<Notifications />
+			...
+		</div>
+	)
+}
+
+```
+
+Then just call a notification with `notify.show()`
+
+```js
+
+notify.show('Toasty!');
+
+```
+
+## Options
+
+The toast notification function `notify.show()` supports `message`, `type` and `timeout` attributes in the following way.
+
+`notify.show(message, type, timeout)`
+
+
+`message` is the content of the toast notification.
+
+
+`type` consists of three variants:
+
+- `success` to render a success notification.
+- `warning` to render a warning notification.
+- `error` to render an error notification.
+
+if `type` is not set, it will render a neutral notification.
+
+
+`timeout` is the time (in milliseconds) the toast will remain on screen.
+if it's not set, it will display for the default `5000ms` time.
