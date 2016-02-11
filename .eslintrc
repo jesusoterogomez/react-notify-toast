@@ -1,4 +1,5 @@
 {
+  "parser" : "babel-eslint",
   "env": {
     "browser": true,
     "node": true,
@@ -49,7 +50,7 @@
     "no-dupe-keys": 2, // disallow duplicate keys when creating object literals
     "no-duplicate-case": 2, // disallow a duplicate case label.
     "no-empty": 2, // disallow empty statements
-    "no-empty-class": 2, // disallow the use of empty character classes in regular expressions
+    "no-empty-character-class": 2, // disallow the use of empty character classes in regular expressions
     "no-ex-assign": 2, // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 2, // disallow double-negation boolean casts in a boolean context
     "no-extra-parens": 0, // disallow unnecessary parentheses (off by default)
@@ -61,7 +62,7 @@
     "no-negated-in-lhs": 2, // disallow negation of the left operand of an in expression
     "no-obj-calls": 2, // disallow the use of object properties of the global object (Math and JSON) as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
-    "no-reserved-keys": 2, // disallow reserved words being used as object literal keys (off by default)
+    "quote-props": [2, "as-needed"], // enforce quotes when they are required
     "no-sparse-arrays": 2, // disallow sparse arrays
     "no-unreachable": 2, // disallow unreachable statements after a return, throw, continue, or break statement
     "use-isnan": 2, // disallow comparisons with the value NaN
@@ -177,7 +178,7 @@
     "no-ternary": 0, // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1, // disallow trailing whitespace at the end of lines
     "no-underscore-dangle": 0, // disallow dangling underscores in identifiers
-    "no-wrap-func": 1, // disallow wrapping of non-IIFE statements in parens
+    "no-extra-parens": [1, "functions"], // disallow wrapping of non-IIFE statements in parens
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "padded-blocks": [1, "never"], // enforce padding within blocks (off by default)
@@ -189,10 +190,12 @@
     "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
     "space-before-blocks": [1, "always"], // require or disallow space before blocks (off by default)
     "space-before-function-paren": [1, {"anonymous": "never", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
-    "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "object-curly-spacing": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "computed-property-spacing": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "array-bracket-spacing": [1, "never"], // require or disallow spaces inside brackets (off by default)
     "space-in-parens": [1, "never"], // require or disallow spaces inside parentheses (off by default)
     "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-    "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
+    "spaced-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
     "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
 
     //
@@ -222,8 +225,8 @@
     //
     // React specific linting rules for ESLint
     //
+    "jsx-quotes": [2, "prefer-double"], // Enforce quote style for JSX attributes
     "react/display-name": 0, // Prevent missing displayName in a React component definition
-    "react/jsx-quotes": [2, "double", "avoid-escape"], // Enforce quote style for JSX attributes
     "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
     "react/jsx-sort-props": 0, // Enforce props alphabetical sorting
     "react/jsx-uses-react": 2, // Prevent React to be incorrectly marked as unused
