@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import assign from 'object-assign';
 let notificationWrapperId = 'notification-wrapper';
 let defaultTimeout = 5000; // ms
@@ -12,8 +13,8 @@ const colorWarning = '#F5E273';
 const textColorWarning = '#333333';
 
 /* React Notification Component */
-let Toast = React.createClass({
-	propTypes: {
+class Toast extends React.Component {
+	static propTypes = {
 		text: PropTypes.string,
 		timeout: PropTypes.number,
 		type: PropTypes.string,
@@ -21,13 +22,11 @@ let Toast = React.createClass({
 			PropTypes.object,
 			PropTypes.bool
 		])
-	},
+	};
 
-	getInitialState() {
-		return {
-			styleParent: null
-		};
-	},
+	state = {
+		styleParent: null
+	};
 
 	getStyles() {
 		let styles = {};
@@ -66,44 +65,40 @@ let Toast = React.createClass({
 		};
 
 		/* If type is set, merge toast action styles with base */
-		if (this.props.type) {
-			switch (this.props.type) {
-				case 'success':
-					const successStyle = {
-						backgroundColor: colorSuccess,
-						color: colorWhite
-					};
-					styles.content = assign(contentStyle, successStyle);
-					break;
+		switch (this.props.type) {
+			case 'success':
+				const successStyle = {
+					backgroundColor: colorSuccess,
+					color: colorWhite
+				};
+				styles.content = assign({}, contentStyle, successStyle);
+				break;
 
-				case 'error':
-					const errorStyle = {
-						backgroundColor: colorError,
-						color: colorWhite
-					};
-					styles.content = assign(contentStyle, errorStyle);
-					break;
+			case 'error':
+				const errorStyle = {
+					backgroundColor: colorError,
+					color: colorWhite
+				};
+				styles.content = assign({}, contentStyle, errorStyle);
+				break;
 
-				case 'warning':
-					const warningStyle = {
-						backgroundColor: colorWarning,
-						color: textColorWarning
-					};
-					styles.content = assign(contentStyle, warningStyle);
-					break;
+			case 'warning':
+				const warningStyle = {
+					backgroundColor: colorWarning,
+					color: textColorWarning
+				};
+				styles.content = assign({}, contentStyle, warningStyle);
+				break;
 
-				default:
-					styles.content = contentStyle;
-					break;
-			}
-		} else {
-			styles.content = contentStyle;
+			default:
+				styles.content = assign({}, contentStyle);
+				break;
 		}
 
 		styles.container = containerStyle;
 
 		return styles;
-	},
+	}
 
 	getVisibleState(context) {
 		let base = this.getStyles().container;
@@ -133,20 +128,20 @@ let Toast = React.createClass({
 		setTimeout(function() {
 			context.updateStyle(base, stylesHide);
 		}, this.props.timeout);
-	},
+	}
 
 	updateStyle(base, update) {
-		this.setState({styleParent: assign(base, update)});
-	},
+		this.setState({styleParent: assign({}, base, update)});
+	}
 
 	getBaseStyle() {
 		this.setState({styleParent: this.getStyles().container});
-	},
+	}
 
 	componentDidMount() {
 		this.getBaseStyle();
 		this.getVisibleState(this);
-	},
+	}
 
 	render() {
 		let {text, type} = this.props;
@@ -158,21 +153,21 @@ let Toast = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
 /* Private Functions */
 
 /* Render React component */
 function renderToast(text, type, timeout) {
-	React.render(
-		<Toast text={text} timeout={timeout} type={type} />,
+	ReactDOM.render(
+		<Toast text={text} timeout={timeout} type={type}/>,
 		document.getElementById(notificationWrapperId)
 	);
 }
 
 /* Unmount React component */
 function hideToast() {
-	React.unmountComponentAtNode(document.getElementById(notificationWrapperId));
+	ReactDOM.unmountComponentAtNode(document.getElementById(notificationWrapperId));
 }
 
 /* Public functions */
@@ -199,15 +194,15 @@ function show(text, type, timeout) {
 
 
 /* Export notification container */
-export default React.createClass({
+export default class extends React.Component {
 	render() {
 		return (
 			<div id={notificationWrapperId}></div>
 		);
 	}
-});
+}
 
 /* Export notification functions */
 export let notify = {
-	show: show
+	show
 };
