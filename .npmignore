@@ -8,10 +8,6 @@ node_modules
 # OSX
 *.DS_Store
 
-# Builds
-bin
-
 # Logs
 *.log
 *~
-_tests
