@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.notify = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _react = require('react');
 
@@ -40,21 +40,15 @@ var textColorWarning = '#333333';
 
 /* React Notification Component */
 
-var Toast = function (_React$Component) {
+var Toast = (function (_React$Component) {
 	_inherits(Toast, _React$Component);
 
 	function Toast() {
-		var _Object$getPrototypeO;
-
 		var _temp, _this, _ret;
 
 		_classCallCheck(this, Toast);
 
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
-		}
-
-		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Toast)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toast).apply(this, arguments)), _this), _this.state = {
 			styleParent: null
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
@@ -202,12 +196,11 @@ var Toast = function (_React$Component) {
 	}]);
 
 	return Toast;
-}(_react2.default.Component);
+})(_react2.default.Component);
 
 /* Private Functions */
 
 /* Render React component */
-
 
 Toast.propTypes = {
 	text: _react.PropTypes.string,
@@ -248,7 +241,7 @@ function show(text, type, timeout) {
 
 /* Export notification container */
 
-var _class = function (_React$Component2) {
+var _class = (function (_React$Component2) {
 	_inherits(_class, _React$Component2);
 
 	function _class() {
@@ -265,10 +258,9 @@ var _class = function (_React$Component2) {
 	}]);
 
 	return _class;
-}(_react2.default.Component);
+})(_react2.default.Component);
 
 /* Export notification functions */
-
 
 exports.default = _class;
 var notify = exports.notify = {

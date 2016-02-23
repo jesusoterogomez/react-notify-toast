@@ -1,13 +1,15 @@
 {
   "name": "react-notify-toast",
   "title": "React Notify Toast",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Toast notifications for React.js",
   "author": "Jesús Otero <hello@jesusoterogomez.com>",
   "main": "bin/notify.js",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p bin && babel src/notify.js -o bin/notify.js"
+    "lint": "eslint src/",
+    "compile": "babel -d bin/ src/",
+    "prepublish": "npm run compile"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.8",
