@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'object-assign';
+
 let notificationWrapperId = 'notification-wrapper';
 let defaultTimeout = 5000; // ms
 let animationDuration = 300; // ms
