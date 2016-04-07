@@ -37,7 +37,7 @@ class Toast extends React.Component {
 			width: '50%',
 			margin: '0 auto',
 			right: '0',
-			top: '-100px',
+			top: '-108px',
 			left: '0',
 			textAlign: 'center',
 			zIndex: '999',
@@ -57,7 +57,7 @@ class Toast extends React.Component {
 
 		const contentStyle = {
 			cursor: 'pointer',
-			display: 'inline',
+			display: 'block',
 			width: 'auto',
 			borderRadius: '0 0 4px 4px',
 			backgroundColor: 'white',
