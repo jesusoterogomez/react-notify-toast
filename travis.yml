@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- '4.1'
+install:
+- npm install
+before_script:
+- PACKAGE_VERSION=$(npm --loglevel silent run read:version)
+- TAG_FOUND=$(if GIT_DIR=$(git show-ref --tags | grep -q "refs/tags/$PACKAGE_VERSION$"); then echo true; else echo false; fi)
+- npm run lint
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: npm
+  api_key: $NPM_API_KEY
+  on:
+    condition: "$TAG_FOUND == false"
+    branch: master
+after_deploy:
+  if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$PACKAGE_VERSION" ]) && 
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    git config --global user.email "builds@travis-ci.com";
+    git config --global user.name "Travis CI";
+    export GIT_TAG=$PACKAGE_VERSION;
+    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $PACKAGE_VERSION";
+    git push origin $GIT_TAG;
+  fi
+branches:
+  except:
+    - /^(\d+\.)(\d+\.)(\d+)(-\w+)?$/
