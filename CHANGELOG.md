@@ -16,7 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [comment]: # (Build Comparison Links)
 
 [unreleased]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.1.2...HEAD
-[1.0.17]: https://github.com/jesusoterogomez/react-notify-toast/tree/0.1.2
+[1.0.2]: https://github.com/jesusoterogomez/react-notify-toast/tree/0.1.2
 
 [comment]: # (Issue Links)
 
