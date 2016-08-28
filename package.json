@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "object-assign": "^3.0.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react": "^0.14.7 || ^15.0.0",
+    "react-dom": "^0.14.7 || ^15.0.0"
   }
 }
