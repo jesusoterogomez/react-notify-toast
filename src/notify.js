@@ -190,7 +190,7 @@ function show(text, type, timeout) {
 		// Render Component with Props.
 		renderToast(text, type, renderTimeout);
 
-		if (this.props.timeout === -1) {
+		if (timeout === -1) {
 			return;
 		}
 
