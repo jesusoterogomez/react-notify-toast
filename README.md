@@ -71,4 +71,5 @@ if `type` is not set, it will render a neutral notification.
 
 
 `timeout` is the time (in milliseconds) the toast will remain on screen.
-if it's not set, it will display for the default `5000ms` time.
+if it's not set, it will display for the default `5000ms` time. 
+You can also pass `-1` to cause the notification to display persistently.
