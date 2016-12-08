@@ -19,6 +19,7 @@ class Toast extends React.Component {
 		text: PropTypes.string,
 		timeout: PropTypes.number,
 		type: PropTypes.string,
+		color: PropTypes.object,
 		style: PropTypes.oneOfType([
 			PropTypes.object,
 			PropTypes.bool
@@ -89,6 +90,14 @@ class Toast extends React.Component {
 					color: textColorWarning
 				};
 				styles.content = assign({}, contentStyle, warningStyle);
+				break;
+
+			case 'custom':
+				const customStyle = {
+					backgroundColor: this.props.color.background,
+					color: this.props.color.text
+				};
+				styles.content = assign({}, contentStyle, customStyle);
 				break;
 
 			default:
@@ -163,9 +172,9 @@ class Toast extends React.Component {
 /* Private Functions */
 
 /* Render React component */
-function renderToast(text, type, timeout) {
+function renderToast(text, type, timeout, color) {
 	ReactDOM.render(
-		<Toast text={text} timeout={timeout} type={type}/>,
+		<Toast text={text} timeout={timeout} type={type} color={color}/>,
 		document.getElementById(notificationWrapperId)
 	);
 }
@@ -178,7 +187,7 @@ function hideToast() {
 /* Public functions */
 
 /* Show Animated Toast Message */
-function show(text, type, timeout) {
+function show(text, type, timeout, color) {
 	if (!document.getElementById(notificationWrapperId).hasChildNodes()) {
 		let renderTimeout = timeout;
 
@@ -188,7 +197,7 @@ function show(text, type, timeout) {
 		}
 
 		// Render Component with Props.
-		renderToast(text, type, renderTimeout);
+		renderToast(text, type, renderTimeout, color);
 
 		if (timeout === -1) {
 			return;

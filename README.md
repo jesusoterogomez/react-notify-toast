@@ -19,10 +19,10 @@ To include this project you need to require the module by using CommonJS syntax 
 
 ```js
 // ES6
-import Notifications, {notify} from 'react-notify-toast'; 
+import Notifications, {notify} from 'react-notify-toast';
 /* Notifications is the default export.
    It represents the React Component that contains the notifications.
-   
+
    You can give the default export any name
    but in this example it will be referenced as Notifications */
 
@@ -55,7 +55,7 @@ notify.show('Toasty!');
 
 The toast notification function `notify.show()` supports `message`, `type` and `timeout` attributes in the following way.
 
-`notify.show(message, type, timeout)`
+`notify.show(message, type, timeout, color)`
 
 
 `message` is the content of the toast notification.
@@ -66,10 +66,18 @@ The toast notification function `notify.show()` supports `message`, `type` and `
 - `success` to render a success notification.
 - `warning` to render a warning notification.
 - `error` to render an error notification.
+- `custom` to render user defined colors for the notification.
 
 if `type` is not set, it will render a neutral notification.
 
 
 `timeout` is the time (in milliseconds) the toast will remain on screen.
-if it's not set, it will display for the default `5000ms` time. 
+if it's not set, it will display for the default `5000ms` time.
 You can also pass `-1` to cause the notification to display persistently.
+
+`color` is for the `background` as well as the `text` of the notification. It accepts an object with the following properties
+
+```js
+let myColor = { background: '#0E1717', text: "#FFFFFF" };
+notify.show("this is sample text", "custom", 5000, myColor);
+```
