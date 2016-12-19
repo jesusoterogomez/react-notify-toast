@@ -1,7 +1,7 @@
 {
   "name": "react-notify-toast",
   "title": "React Notify Toast",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Toast notifications for React.js",
   "keywords": ["react", "toast", "notification", "component", "notify"],
   "author": "Jesús Otero <hello@jesusoterogomez.com>",
