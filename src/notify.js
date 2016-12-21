@@ -63,7 +63,7 @@ class Toast extends React.Component {
 			padding: '10px 30px',
 			pointerEvents: 'all'
 		};
-		
+
 		switch (this.props.position) {
 			case 'top':
 				containerStyle.top = '-100px';
@@ -165,7 +165,7 @@ class Toast extends React.Component {
 			MozTransform: `translateY(${translationHide})`
 		};
 
-		setTimeout(function () {
+		setTimeout(function() {
 			context.updateStyle(base, stylesHide);
 		}, this.props.timeout);
 	}
@@ -232,7 +232,7 @@ function show(text, type, timeout, color, position, zIndex) {
 		}
 
 		// Unmount react component after the animation finished.
-		setTimeout(function () {
+		setTimeout(function() {
 			hideToast();
 		}, renderTimeout + animationDuration);
 	}
