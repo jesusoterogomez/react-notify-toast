@@ -53,9 +53,9 @@ notify.show('Toasty!');
 
 ## Options
 
-The toast notification function `notify.show()` supports `message`, `type` and `timeout` attributes in the following way.
+The toast notification function `notify.show()` supports `message`, `type`, `timeout`, `color`, `position` and `zIndex` attributes in the following way.
 
-`notify.show(message, type, timeout, color)`
+`notify.show(message, type, timeout, color, position, zIndex)`
 
 
 `message` is the content of the toast notification.
@@ -79,5 +79,16 @@ You can also pass `-1` to cause the notification to display persistently.
 
 ```js
 let myColor = { background: '#0E1717', text: "#FFFFFF" };
-notify.show("this is sample text", "custom", 5000, myColor);
+```
+
+`position` is for where the notification should show up. Can be one of `'top'` (default) and `'bottom'`.
+
+`zIndex` is for setting the z-index rule for the notification. This can be useful if you have some other fixed or absolute positioned elements you need it to be displayed above. 
+Defaults to `'999'`.
+
+#### Complete example would look something like this:
+
+```js
+let myColor = { background: '#0E1717', text: "#FFFFFF" };
+notify.show("this is sample text", "custom", 5000, myColor, "top", "999");
 ```
