@@ -20,10 +20,9 @@ class Toast extends React.Component {
 		timeout: PropTypes.number,
 		type: PropTypes.string,
 		color: PropTypes.object,
-		style: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.bool
-		])
+		style: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+		position: PropTypes.string,
+		zIndex: PropTypes.string
 	};
 
 	state = {
@@ -38,10 +37,9 @@ class Toast extends React.Component {
 			width: '50%',
 			margin: '0 auto',
 			right: '0px',
-			top: '-100px',
 			left: '0px',
 			textAlign: 'center',
-			zIndex: '999',
+			zIndex: this.props.zIndex || '999',
 			pointerEvents: 'none',
 			transition: 'all ' + animationDuration + 'ms ease',
 			transform: 'translateY(0px)',
@@ -59,12 +57,34 @@ class Toast extends React.Component {
 		const contentStyle = {
 			cursor: 'pointer',
 			display: 'inline',
-			width: 'auto',
 			borderRadius: '0 0 4px 4px',
+			width: 'auto',
 			backgroundColor: 'white',
 			padding: '10px 30px',
 			pointerEvents: 'all'
 		};
+
+		switch (this.props.position) {
+			case 'top':
+				containerStyle.top = '-100px';
+				break;
+			case 'bottom':
+				// Move notification to bottom
+				containerStyle.bottom = '8px';  
+				// Hide notification under bottom of screen
+				containerStyle.transform = 'translateY(36px)';
+				containerStyle.msTransform = 'translateY(36px)';
+				containerStyle.WebkitTransform = 'translateY(36px)';
+				containerStyle.OTransform = 'translateY(36px)';
+				containerStyle.MozTransform = 'translateY(36px)';
+				// Override border radius to be top corners instead
+				contentStyle.borderRadius = '4px 4px 0 0';
+				break;
+			default:
+				containerStyle.top = '-100px';
+				break;
+		}
+
 
 		/* If type is set, merge toast action styles with base */
 		switch (this.props.type) {
@@ -111,18 +131,22 @@ class Toast extends React.Component {
 	}
 
 	getVisibleState(context) {
-		let base = this.getStyles().container;
+		let base = this
+			.getStyles()
+			.container;
 
+		// Set direction of show transformation based on position prop
+		const translationShow = this.props.position === 'bottom' ? '0' : '108px';
 		// Show
 		const stylesShow = {
-			transform: 'translateY(108px)',
-			msTransform: 'translateY(108px)',
-			WebkitTransform: 'translateY(108px)',
-			OTransform: 'translateY(108px)',
-			MozTransform: 'translateY(108px)'
+			transform: `translateY(${translationShow})`,
+			msTransform: `translateY(${translationShow})`,
+			WebkitTransform: `translateY(${translationShow})`,
+			OTransform: `translateY(${translationShow})`,
+			MozTransform: `translateY(${translationShow})`
 		};
 
-		setTimeout(function() {
+		setTimeout(() => {
 			context.updateStyle(base, stylesShow);
 		}, 100); // wait 100ms after the component is called to animate toast.
 
@@ -130,13 +154,15 @@ class Toast extends React.Component {
 			return;
 		}
 
+		// Set direction of hide transformation based on position prop
+		const translationHide = this.props.position === 'bottom' ? '36px' : '-108px';
 		// Hide after timeout
 		const stylesHide = {
-			transform: 'translateY(-108px)',
-			msTransform: 'translateY(-108px)',
-			WebkitTransform: 'translateY(-108px)',
-			OTransform: 'translateY(-108px)',
-			MozTransform: 'translateY(-108px)'
+			transform: `translateY(${translationHide})`,
+			msTransform: `translateY(${translationHide})`,
+			WebkitTransform: `translateY(${translationHide})`,
+			OTransform: `translateY(${translationHide})`,
+			MozTransform: `translateY(${translationHide})`
 		};
 
 		setTimeout(function() {
@@ -149,7 +175,11 @@ class Toast extends React.Component {
 	}
 
 	getBaseStyle() {
-		this.setState({styleParent: this.getStyles().container});
+		this.setState({
+			styleParent: this
+				.getStyles()
+				.container
+		});
 	}
 
 	componentDidMount() {
@@ -172,11 +202,9 @@ class Toast extends React.Component {
 /* Private Functions */
 
 /* Render React component */
-function renderToast(text, type, timeout, color) {
+function renderToast(text, type, timeout, color, position, zIndex) {
 	ReactDOM.render(
-		<Toast text={text} timeout={timeout} type={type} color={color}/>,
-		document.getElementById(notificationWrapperId)
-	);
+		<Toast text={text} timeout={timeout} type={type} color={color} position={position} zIndex={zIndex} />, document.getElementById(notificationWrapperId));
 }
 
 /* Unmount React component */
@@ -187,7 +215,7 @@ function hideToast() {
 /* Public functions */
 
 /* Show Animated Toast Message */
-function show(text, type, timeout, color) {
+function show(text, type, timeout, color, position, zIndex) {
 	if (!document.getElementById(notificationWrapperId).hasChildNodes()) {
 		let renderTimeout = timeout;
 
@@ -197,7 +225,7 @@ function show(text, type, timeout, color) {
 		}
 
 		// Render Component with Props.
-		renderToast(text, type, renderTimeout, color);
+		renderToast(text, type, renderTimeout, color, position, zIndex);
 
 		if (timeout === -1) {
 			return;
@@ -209,7 +237,6 @@ function show(text, type, timeout, color) {
 		}, renderTimeout + animationDuration);
 	}
 }
-
 
 /* Export notification container */
 export default class extends React.Component {
