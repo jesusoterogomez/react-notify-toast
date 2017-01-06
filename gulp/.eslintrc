@@ -1,0 +1,19 @@
+// 
+// ESLint Rule Overrides for Gulp Tasks
+// 
+// requires 'eslint' npm package
+//
+
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": false
+  },
+
+  "rules": {
+    "no-process-env": 0,
+    "no-var": 0, // require let or const instead of var (off by default),
+    "vars-on-top": 0
+  }
+}
