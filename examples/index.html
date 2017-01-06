@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Notify Example</title>
+</head>
+
+<body>
+    <button id="show">Show notification</button>
+</body>
+
+<script src="../bin/notify-bundle.js"></script>
+
+<script>
+    var notify = require('react-notify-toast').notify;
+    var button = document.getElementById('show');
+    var counter = 0;
+    button.addEventListener('click', function() {
+        counter++;
+
+        notify.show('Test message number ' + counter);
+    });
+</script>
+</html>
