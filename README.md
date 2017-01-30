@@ -51,6 +51,22 @@ notify.show('Toasty!');
 
 ```
 
+## Queued Notifications
+
+A notification queue can be created using the createShowQueue function, for example, in the constructor of a component:
+
+````js
+constructor() {
+    super();
+    this.show = notify.createShowQueue();
+}
+````
+This queue can then be used with the same API as the notify.show function:
+
+````js
+this.show('Toasty!');
+````
+
 ## Options
 
 The toast notification function `notify.show()` supports `message`, `type` and `timeout` attributes in the following way.
@@ -81,3 +97,9 @@ You can also pass `-1` to cause the notification to display persistently.
 let myColor = { background: '#0E1717', text: "#FFFFFF" };
 notify.show("this is sample text", "custom", 5000, myColor);
 ```
+
+The createShowQueue function has two optional arguments:
+
+* `initialRecallDelay` is how long (in ms) to wait if the first attempt at showing a notification fails (because a non-queued notification was already being shown). Default: 500ms
+
+* `recallDelayIncrement` is a time (in ms) added to the recallDelay after each failed attempt.  This is to mitigate numerous rapidly-repeated calls in the case of a non-queued notification being shown without a timeout. Default 500ms
