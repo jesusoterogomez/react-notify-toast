@@ -12,6 +12,10 @@ const colorError = '#E85742';
 const colorSuccess = '#55CA92';
 const colorWarning = '#F5E273';
 const textColorWarning = '#333333';
+const toastGlobals = {
+    zIndex:'999'
+};
+
 
 /* React Notification Component */
 class Toast extends React.Component {
@@ -41,7 +45,7 @@ class Toast extends React.Component {
 			top: '-100px',
 			left: '0px',
 			textAlign: 'center',
-			zIndex: '999',
+			zIndex: toastGlobals.zIndex,
 			pointerEvents: 'none',
 			transition: 'all ' + animationDuration + 'ms ease',
 			transform: 'translateY(0px)',
@@ -263,6 +267,11 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
     }
 }
 
+/* Modify Globals*/
+function setGlobal(param, value) {
+	if(toastGlobals.hasOwnProperty(param))
+		toastGlobals[param] = value;
+}
 /* Export notification container */
 export default class extends React.Component {
 	render() {
@@ -275,5 +284,6 @@ export default class extends React.Component {
 /* Export notification functions */
 export let notify = {
 	show,
-    createShowQueue
+    createShowQueue,
+    setGlobal
 };
