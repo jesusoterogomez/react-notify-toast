@@ -201,7 +201,7 @@ function show(text, type, timeout, color) {
 		renderToast(text, type, renderTimeout, color);
 
 		if (timeout === -1) {
-			return;
+			return false;
 		}
 
 		// Unmount react component after the animation finished.
@@ -214,12 +214,16 @@ function show(text, type, timeout, color) {
     return false;
 }
 
-/* Add to Animated Toast Message Queue */
-/* Display immediately if no queue     */
-/* initialRecallDelay: If the call to show fails because of an existing notification, how long to wait until we retry (ms) */
-/* recallDelayIncrement: Each time a successive call fails, the recall delay will be incremented by this (ms) */
+/**
+ * Add to Animated Toast Message Queue
+ * Display immediately if no queue
+ * @param  {Number} initialRecallDelay   If the call to show fails because of an existing
+ *                                       notification, how long to wait until we retry (ms)
+ * @param  {Number} recallDelayIncrement Each time a successive call fails, the recall delay
+ *                                       will be incremented by this (ms)
+ * @return {[type]}                      [description]
+ */
 function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
-
     // Array to hold queued messages
     this.msgs = [];
 
@@ -232,7 +236,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
     // Retrieve the next message from the queue and try to show it
     this.showNotify = () => {
         // If there are no messages in the queue
-        if (this.msgs.length ===0) {
+        if (this.msgs.length === 0) {
             this.isNotifying = false;
             return;
         }
@@ -241,7 +245,8 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
 
         const current = this.msgs.pop();
 
-        // show will now return true if it is able to send the message, or false if there is an existing message
+        // show will now return true if it is able to send the message,
+        // or false if there is an existing message
         if (show(current.text, current.type, current.timeout, current.color)) {
             this.currentRecallDelay = initialRecallDelay;
             if (current.timeout > 0) {
@@ -253,14 +258,14 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
             setTimeout(() => this.showNotify(), this.currentRecallDelay);
             this.currentRecallDelay += recallDelayIncrement;
         }
-    }
+    };
 
     return (text, type = '', timeout = defaultTimeout, color = colorWhite) => {
-        this.msgs.push({ text, type, timeout, color });
+        this.msgs.push({text, type, timeout, color});
         if (!this.isNotifying) {
             this.showNotify();
         }
-    }
+    };
 }
 
 /* Export notification container */
