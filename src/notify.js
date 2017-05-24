@@ -24,7 +24,8 @@ class Toast extends React.Component {
 		style: PropTypes.oneOfType([
 			PropTypes.object,
 			PropTypes.bool
-		])
+		]),
+		settings: PropTypes.object
 	};
 
 	state = {
@@ -36,7 +37,6 @@ class Toast extends React.Component {
 
 		const containerStyle = {
 			position: 'fixed',
-			width: '50%',
 			margin: '0 auto',
 			right: '0px',
 			top: '-100px',
@@ -66,6 +66,13 @@ class Toast extends React.Component {
 			padding: '10px 30px',
 			pointerEvents: 'all'
 		};
+
+		/* Allow custom definition of a width */
+		if (this.props.settings.fullWidth) {
+			contentStyle.width = '100%';
+			contentStyle.display = 'block';
+			contentStyle.margin = '0 auto';
+		}
 
 		/* If type is set, merge toast action styles with base */
 		switch (this.props.type) {
@@ -173,9 +180,9 @@ class Toast extends React.Component {
 /* Private Functions */
 
 /* Render React component */
-function renderToast(text, type, timeout, color) {
+function renderToast(text, type, timeout, color, settings) {
 	ReactDOM.render(
-		<Toast text={text} timeout={timeout} type={type} color={color}/>,
+		<Toast text={text} timeout={timeout} type={type} color={color} settings={settings}/>,
 		document.getElementById(notificationWrapperId)
 	);
 }
@@ -189,7 +196,7 @@ function hideToast() {
 
 /* Show Animated Toast Message */
 /* Returns true if the toast was shown, or false if show failed due to an existing notification */
-function show(text, type, timeout, color) {
+function show(text, type, timeout, color, settings) {
 	if (!document.getElementById(notificationWrapperId).hasChildNodes()) {
 		let renderTimeout = timeout;
 
@@ -199,7 +206,7 @@ function show(text, type, timeout, color) {
 		}
 
 		// Render Component with Props.
-		renderToast(text, type, renderTimeout, color);
+		renderToast(text, type, renderTimeout, color, settings);
 
 		if (timeout === -1) {
 			return false;
@@ -248,7 +255,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
 
         // show will now return true if it is able to send the message,
         // or false if there is an existing message
-        if (show(current.text, current.type, current.timeout, current.color)) {
+        if (show(current.text, current.type, current.timeout, current.color, current.settings)) {
             this.currentRecallDelay = initialRecallDelay;
             if (current.timeout > 0) {
                 setTimeout(() => this.showNotify(), current.timeout + animationDuration);
@@ -261,8 +268,8 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         }
     };
 
-    return (text, type = '', timeout = defaultTimeout, color = colorWhite) => {
-        this.msgs.push({text, type, timeout, color});
+    return (text, type = '', timeout = defaultTimeout, color = colorWhite, settings = {}) => {
+        this.msgs.push({text, type, timeout, color, settings});
         if (!this.isNotifying) {
             this.showNotify();
         }
