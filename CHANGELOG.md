@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-  
+- [\#19] Support for rendering React elements inside toasts
+
 ### Changed
 
 ### Fixed
@@ -26,7 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [\#22] Support for queueing notifications, deatils in "Queued Notifications" section of README
 
 ### Changed
-- [\#] React PropTypes dependency changed for prop-types package.
+- [\#32] React PropTypes dependency changed for prop-types package.
 
 ## [0.1.4] - 2016-12-19
 ### Added
@@ -55,4 +56,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [\#39]: https://github.com/jesusoterogomez/react-notify-toast/issues/39
 [\#36]: https://github.com/jesusoterogomez/react-notify-toast/issues/36
 [\#34]: https://github.com/jesusoterogomez/react-notify-toast/issues/34
+[\#32]: https://github.com/jesusoterogomez/react-notify-toast/issues/32
+[\#22]: https://github.com/jesusoterogomez/react-notify-toast/issues/22
+[\#20]: https://github.com/jesusoterogomez/react-notify-toast/issues/20
+[\#19]: https://github.com/jesusoterogomez/react-notify-toast/issues/19
+[\#14]: https://github.com/jesusoterogomez/react-notify-toast/issues/14
 [\#8]: https://github.com/jesusoterogomez/react-notify-toast/issues/8
