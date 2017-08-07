@@ -1,7 +1,7 @@
 # Toast Notifications for React.js.
 
 <p align="center"> 
-<img src="https://media.giphy.com/media/26n6Lo6mOURbQaCHK/giphy.gif">
+<img height="110" src="https://media.giphy.com/media/26n6Lo6mOURbQaCHK/giphy.gif">
 </p>
 
 ## Installation
