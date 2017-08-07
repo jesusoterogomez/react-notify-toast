@@ -7,7 +7,9 @@ import stylesheet from '../stylesheet';
 /* React Notification Component */
 class Toast extends React.Component {
     static propTypes = {
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([
+            PropTypes.string, PropTypes.element
+        ]),
         timeout: PropTypes.number,
         type: PropTypes.string,
         color: PropTypes.object,
