@@ -100,7 +100,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         }
     };
 
-    return (text, type = '', timeout = defaultTimeout, color = colorWhite) => {
+    return (text, type = '', timeout = defaults.timeout, color = colorWhite) => {
         this.msgs.push({text, type, timeout, color});
         if (!this.isNotifying) {
             this.showNotify();
