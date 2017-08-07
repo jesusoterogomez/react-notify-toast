@@ -1,7 +1,7 @@
-# Toast Notifications for React.js.
+# Toast Notifications for React.js. [![Build Status](https://travis-ci.org/jesusoterogomez/react-notify-toast.svg?branch=master)](https://travis-ci.org/jesusoterogomez/react-notify-toast)
 
-## Installation
 
+## Installation 
 The recommended way to include this sdk into your project is by using npm. Install it into your project as a dependency with
 
 ```sh
