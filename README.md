@@ -1,5 +1,8 @@
 # Toast Notifications for React.js. [![Build Status](https://travis-ci.org/jesusoterogomez/react-notify-toast.svg?branch=master)](https://travis-ci.org/jesusoterogomez/react-notify-toast)
 
+<p align="center"> 
+<img height="110" src="https://media.giphy.com/media/26n6Lo6mOURbQaCHK/giphy.gif">
+</p>
 
 ## Installation 
 The recommended way to include this sdk into your project is by using npm. Install it into your project as a dependency with
@@ -51,22 +54,6 @@ notify.show('Toasty!');
 
 ```
 
-## Queued Notifications
-
-A notification queue can be created using the createShowQueue function, for example, in the constructor of a component:
-
-````js
-constructor() {
-    super();
-    this.show = notify.createShowQueue();
-}
-````
-This queue can then be used with the same API as the notify.show function:
-
-````js
-this.show('Toasty!');
-````
-
 ## Options
 
 The toast notification function `notify.show()` supports `message`, `type` and `timeout` attributes in the following way.
@@ -97,6 +84,38 @@ You can also pass `-1` to cause the notification to display persistently.
 let myColor = { background: '#0E1717', text: "#FFFFFF" };
 notify.show("this is sample text", "custom", 5000, myColor);
 ```
+
+## Overriding Defaults
+
+The `<Notification/>` component can receive an `options` property, which can override any value in [src/defaults.js](src/defaults.js)
+
+This is usually useful to modify the `zIndex` for ensuring that the notifications are displayed on top of other elements with <a href="https://css-tricks.com/rational-z-index-values/" target="_blank">crazy z-index™</a>
+
+
+#### Example: 
+
+```js
+<Notification options={{zIndex: 5000}} />
+```
+
+#### Note:
+Keep in mind that it can only override topmost values, and not nested values. (i.e. not a deep merge, but a shallow assign).
+
+## Queued Notifications
+
+A notification queue can be created using the createShowQueue function, for example, in the constructor of a component:
+
+````js
+constructor() {
+    super();
+    this.show = notify.createShowQueue();
+}
+````
+This queue can then be used with the same API as the notify.show function:
+
+````js
+this.show('Toasty!');
+````
 
 The createShowQueue function has two optional arguments:
 

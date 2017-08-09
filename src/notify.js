@@ -7,13 +7,13 @@ import {defaults} from './defaults';
 /* Render React component */
 function renderToast(text, type, timeout, color) {
     let target = document.getElementById(defaults.wrapperId);
-	ReactDOM.render(<Toast text={text} timeout={timeout} type={type} color={color}/>, target);
+    ReactDOM.render(<Toast text={text} timeout={timeout} type={type} color={color}/>, target);
 }
 
 /* Unmount React component */
 function hide() {
     let target = document.getElementById(defaults.wrapperId);
-	ReactDOM.unmountComponentAtNode(target);
+    ReactDOM.unmountComponentAtNode(target);
 }
 
 
@@ -32,24 +32,24 @@ function hide() {
  * }
  */
 function show(text, type, timeout, color) {
-	if (!document.getElementById(defaults.wrapperId).hasChildNodes()) {
+    if (!document.getElementById(defaults.wrapperId).hasChildNodes()) {
         // Use default timeout if not set.
-		let renderTimeout = timeout || defaults.timeout;
+        let renderTimeout = timeout || defaults.timeout;
 
-		// Render Component with Props.
-		renderToast(text, type, renderTimeout, color);
+        // Render Component with Props.
+        renderToast(text, type, renderTimeout, color);
 
-		if (renderTimeout === -1) {
-			return false;
-		}
+        if (renderTimeout === -1) {
+            return false;
+        }
 
-		// Unmount react component after the animation finished.
-		setTimeout(function() {
-			hide();
-		}, renderTimeout + defaults.animationDuration);
+        // Unmount react component after the animation finished.
+        setTimeout(function() {
+            hide();
+        }, renderTimeout + defaults.animationDuration);
 
         return true;
-	}
+    }
 
     return false;
 }
@@ -110,7 +110,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
 
 /* Export notification functions */
 export let notify = {
-	show,
+    show,
     hide,
     createShowQueue
 };
