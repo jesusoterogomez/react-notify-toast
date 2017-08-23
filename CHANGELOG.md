@@ -8,7 +8,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+
+## [0.3.2] - 2017-08-23
 - [\#42] Show queue was not working due to references to non existing variables
+- [\#41] Fixed warning when using `color` property.
 
 ## [0.3.1] - 2017-08-07
 ### Added
