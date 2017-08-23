@@ -12,7 +12,10 @@ class Toast extends React.Component {
         ]),
         timeout: PropTypes.number,
         type: PropTypes.string,
-        color: PropTypes.object,
+        color: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.string
+		]),
         style: PropTypes.oneOfType([
             PropTypes.object,
             PropTypes.bool
