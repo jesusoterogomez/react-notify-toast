@@ -90,7 +90,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         if (show(current.text, current.type, current.timeout, current.color)) {
             this.currentRecallDelay = initialRecallDelay;
             if (current.timeout > 0) {
-                setTimeout(() => this.showNotify(), current.timeout + animationDuration);
+                setTimeout(() => this.showNotify(), current.timeout + defaults.animationDuration);
             }
         } else {
             // If message show failed, re-add the current message to the front of the queue
@@ -100,7 +100,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         }
     };
 
-    return (text, type = '', timeout = defaults.timeout, color = colorWhite) => {
+    return (text, type = '', timeout = defaults.timeout, color) => {
         this.msgs.push({text, type, timeout, color});
         if (!this.isNotifying) {
             this.showNotify();
