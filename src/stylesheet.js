@@ -12,7 +12,7 @@ class Stylesheet {
                 width: '50%',
                 margin: '0 auto',
                 right: '0px',
-                top: '-100px',
+                bottom: '100%',
                 left: '0px',
                 textAlign: 'center',
                 zIndex: defaults.zIndex,
@@ -32,7 +32,7 @@ class Stylesheet {
             },
             content: {
                 cursor: 'pointer',
-                display: 'inline',
+                display: 'inline-block',
                 width: 'auto',
                 borderRadius: '0 0 4px 4px',
                 backgroundColor: 'white',
@@ -40,18 +40,18 @@ class Stylesheet {
                 pointerEvents: 'all'
             },
             show: {
-                transform: 'translateY(108px)',
-                msTransform: 'translateY(108px)',
-                WebkitTransform: 'translateY(108px)',
-                OTransform: 'translateY(108px)',
-                MozTransform: 'translateY(108px)'
+                transform: 'translateY(100%)',
+                msTransform: 'translateY(100%)',
+                WebkitTransform: 'translateY(100%)',
+                OTransform: 'translateY(100%)',
+                MozTransform: 'translateY(100%)'
             },
             hide: {
-                transform: 'translateY(-108px)',
-                msTransform: 'translateY(-108px)',
-                WebkitTransform: 'translateY(-108px)',
-                OTransform: 'translateY(-108px)',
-                MozTransform: 'translateY(-108px)'
+                transform: 'translateY(-100%)',
+                msTransform: 'translateY(-100%)',
+                WebkitTransform: 'translateY(-100%)',
+                OTransform: 'translateY(-100%)',
+                MozTransform: 'translateY(-100%)'
             }
         };
     }

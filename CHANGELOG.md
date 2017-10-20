@@ -4,10 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- [\#26] Support for multiline texts
 
 ### Changed
 
 ### Fixed
+- [\#44] Fixed animation positioning for content that's more than 3 lines of height
 
 ## [0.3.2] - 2017-08-23
 - [\#42] Show queue was not working due to references to non existing variables
