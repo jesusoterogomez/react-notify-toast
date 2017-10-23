@@ -4,7 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- [\#26] Support for multiline texts
+
+### Changed
+
+### Fixed
+
+## [0.4.0] - 2017-10-23
+### Added
+- [\#26] Support for multiline text/content
 
 ### Changed
 
