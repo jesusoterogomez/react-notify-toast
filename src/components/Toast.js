@@ -32,17 +32,15 @@ class Toast extends React.Component {
         let contentStyle = {};
 
         /* If type is set, merge toast action styles with base */
-        if ('custom' === type) {
+        if (type === 'custom') {
             const customStyle = {
                 backgroundColor: color.background,
                 color: color.text
             };
             contentStyle = assign({}, styles.content, customStyle);
-        }
-        else if (type in defaults.colors) {
+        } else if (type in defaults.colors) {
             contentStyle = assign({}, styles.content, defaults.colors[type]);
-        }
-        else {
+        } else {
             contentStyle = assign({}, styles.content);
         }
 

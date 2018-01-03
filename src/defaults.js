@@ -28,9 +28,9 @@ let defaults = {
 function mergeOptions(options) {
     if (options.colors) {
         if ('custom' in options.colors) {
-            delete options.colors.custom
+            delete options.colors.custom;
         }
-        options.colors = assign(defaults.colors, options.colors)
+        options.colors = assign(defaults.colors, options.colors);
     }
     defaults = assign(defaults, options);
 }
