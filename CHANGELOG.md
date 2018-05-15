@@ -9,11 +9,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+## [0.4.1] - 2018-05-16
+### Changed
+- [\#55] Support react 16 as a peer dependency
+
 ## [0.4.0] - 2017-10-23
 ### Added
 - [\#26] Support for multiline text/content
-
-### Changed
 
 ### Fixed
 - [\#44] Fixed animation positioning for content that's more than 3 lines of height
@@ -59,7 +61,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 [comment]: # (Build Comparison Links)
 
-[unreleased]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.1...HEAD
+[unreleased]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.4.0...0.4.1
+[0.4.0]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.2...0.4.0
+[0.3.2]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.1.4...0.2.0
@@ -69,6 +74,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 [comment]: # (Issue Links)
 
+[\#55]: https://github.com/jesusoterogomez/react-notify-toast/issues/55
 [\#39]: https://github.com/jesusoterogomez/react-notify-toast/issues/39
 [\#36]: https://github.com/jesusoterogomez/react-notify-toast/issues/36
 [\#34]: https://github.com/jesusoterogomez/react-notify-toast/issues/34
