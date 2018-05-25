@@ -12,23 +12,23 @@ class Stylesheet {
                 width: '50%',
                 margin: '0 auto',
                 right: '0px',
-                bottom: '100%',
+                top: defaults.top,
                 left: '0px',
                 textAlign: 'center',
                 zIndex: defaults.zIndex,
                 pointerEvents: 'none',
                 transition: 'all ' + defaults.animationDuration + 'ms ease',
-                transform: 'translateY(0px)',
+                transform: 'translateY(-100%)',
 
                 // Vendor Prefixes
                 msTransition: 'all ' + defaults.animationDuration + 'ms ease',
-                msTransform: 'translateY(0px)',
+                msTransform: 'translateY(-100%)',
                 WebkitTransition: 'all ' + defaults.animationDuration + 'ms ease',
-                WebkitTransform: 'translateY(0px)',
+                WebkitTransform: 'translateY(-100%)',
                 OTransition: 'all ' + defaults.animationDuration + 'ms ease',
-                OTransform: 'translateY(0px)',
+                OTransform: 'translateY(-100%)',
                 MozTransition: 'all ' + defaults.animationDuration + 'ms ease',
-                MozTransform: 'translateY(0px)'
+                MozTransform: 'translateY(-100%)'
             },
             content: {
                 cursor: 'pointer',
@@ -40,11 +40,11 @@ class Stylesheet {
                 pointerEvents: 'all'
             },
             show: {
-                transform: 'translateY(100%)',
-                msTransform: 'translateY(100%)',
-                WebkitTransform: 'translateY(100%)',
-                OTransform: 'translateY(100%)',
-                MozTransform: 'translateY(100%)'
+                transform: 'translateY(0)',
+                msTransform: 'translateY(0)',
+                WebkitTransform: 'translateY(0)',
+                OTransform: 'translateY(0)',
+                MozTransform: 'translateY(0)'
             },
             hide: {
                 transform: 'translateY(-100%)',

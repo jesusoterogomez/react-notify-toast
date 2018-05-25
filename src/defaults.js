@@ -5,6 +5,7 @@ let defaults = {
     animationDuration: 300,
     timeout: 5000,
     zIndex: 1000,
+    top: 0, // Controls the offset from top of viewport.
     colors: {
         error: {
             color: "#FFFFFF",
