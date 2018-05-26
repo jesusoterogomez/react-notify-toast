@@ -25,8 +25,9 @@ after_deploy:
     git config --global user.name "Travis CI";
     export GIT_TAG=$PACKAGE_VERSION;
     git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER";
-    git push --quiet https://$GH_TOKEN@GIT_URL > /dev/null 2>&1 ; # prevent key from being printed to logs
+    git push --quiet https://$GH_TOKEN@GIT_URL > /dev/null 2>&1;
   fi
+  # > /dev/null 2>&1 prevents key from being printed to logs
 branches:
   except:
     - /^(\d+\.)(\d+\.)(\d+)(-\w+)?$/
