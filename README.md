@@ -89,8 +89,17 @@ notify.show("this is sample text", "custom", 5000, myColor);
 
 The `<Notification/>` component can receive an `options` property, which can override any value in [src/defaults.js](src/defaults.js)
 
-This is usually useful to modify the `zIndex` for ensuring that the notifications are displayed on top of other elements with <a href="https://css-tricks.com/rational-z-index-values/" target="_blank">crazy z-index™</a>
+This is usually useful to modify the `zIndex` to ensure the toast notifications are displayed on top of other elements with <a href="https://css-tricks.com/rational-z-index-values/" target="_blank">crazy z-index™</a>
 
+If overwritten, these options will be the default for all subsequent notifications
+
+#### Supported Options:
+- `wrapperId` HTML `id` property added to the notification container
+- `animationDuration` time (in milliseconds) used for the hide and show transitions
+- `timeout` time (in milliseconds) the toast will remain on screen
+- `zIndex` sets z-index for notification container
+- `top` sets vertical offset from top of viewport (in any CSS units)
+- `colors` object that contains supported styles for notifications (can be replaced to support custom color schemes)
 
 #### Example: 
 
