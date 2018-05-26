@@ -24,8 +24,8 @@ after_deploy:
     git config --global user.email "builds@travis-ci.com";
     git config --global user.name "Travis CI";
     export GIT_TAG=$PACKAGE_VERSION;
-    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $PACKAGE_VERSION";
-    git push origin $GIT_TAG;
+    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER";
+    git push --quiet https://$GH_TOKEN@GIT_URL > /dev/null 2>&1 ; # prevent key from being printed to logs
   fi
 branches:
   except:
