@@ -4,15 +4,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Fixed
+
+## [0.5.0] - 2018-05-26
+### Added
 - [\#58] Support for setting vertical offset by specifying `top` as a default option.
 ```js
 // Example
 <Notification options={{top: '50px'}}/>
 ```
-
-### Changed
-
-### Fixed
 
 ## [0.4.1] - 2018-05-16
 ### Changed
@@ -66,7 +69,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 [comment]: # (Build Comparison Links)
 
-[unreleased]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.4.1...HEAD
+[unreleased]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.4.1...0.5.0
 [0.4.1]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.2...0.4.0
 [0.3.2]: https://github.com/jesusoterogomez/react-notify-toast/compare/0.3.1...0.3.2
