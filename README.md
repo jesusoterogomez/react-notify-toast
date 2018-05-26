@@ -95,7 +95,8 @@ This is usually useful to modify the `zIndex` for ensuring that the notification
 #### Example: 
 
 ```js
-<Notification options={{zIndex: 5000}} />
+// Will display the notifications at z-index: 200, and with a vertical offset of 50px
+<Notification options={{zIndex: 200, top: '50px'}} />
 ```
 
 #### Note:
