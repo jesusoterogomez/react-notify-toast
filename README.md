@@ -87,7 +87,7 @@ notify.show("this is sample text", "custom", 5000, myColor);
 
 ## Manual closing
 
-The notification can be programmatically closed using the `close` function, for example, in the click handler of a button in the notification:
+The notification can be programmatically closed using the `hide` function, for example, in the click handler of a button in the notification:
 
 ```jsx
 notify.show(
