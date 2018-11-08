@@ -85,6 +85,19 @@ let myColor = { background: '#0E1717', text: "#FFFFFF" };
 notify.show("this is sample text", "custom", 5000, myColor);
 ```
 
+## Manual closing
+
+The notification can be programmatically closed using the `hide` function, for example, in the click handler of a button in the notification:
+
+```jsx
+notify.show(
+  <div>
+    this wont close until you click
+    <button onClick={notify.hide}>close</button>
+  </div>, "error", -1
+);
+```
+
 ## Overriding Defaults
 
 The `<Notification/>` component can receive an `options` property, which can override any value in [src/defaults.js](src/defaults.js)
