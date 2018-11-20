@@ -1,10 +1,10 @@
 # Toast Notifications for React.js. [![Build Status](https://travis-ci.org/jesusoterogomez/react-notify-toast.svg?branch=master)](https://travis-ci.org/jesusoterogomez/react-notify-toast)
 
-<p align="center"> 
+<p align="center">
 <img height="110" src="https://media.giphy.com/media/26n6Lo6mOURbQaCHK/giphy.gif">
 </p>
 
-## Installation 
+## Installation
 The recommended way to include this sdk into your project is by using npm. Install it into your project as a dependency with
 
 ```sh
@@ -114,7 +114,7 @@ If overwritten, these options will be the default for all subsequent notificatio
 - `top` sets vertical offset from top of viewport (in any CSS units)
 - `colors` object that contains supported styles for notifications (can be replaced to support custom color schemes)
 
-#### Example: 
+#### Example:
 
 ```js
 // Will display the notifications at z-index: 200, and with a vertical offset of 50px
@@ -139,6 +139,21 @@ This queue can then be used with the same API as the notify.show function:
 ````js
 this.show('Toasty!');
 ````
+
+### Override Colors Example:
+
+cannot be override color 'custom'
+
+```js
+const customColors = {
+	customColor: {
+		custom1: {background: '#839ae4',color: '#ffffff'}
+	}
+}
+<Notification options={{colors: customColors}} />
+
+this.show('Toasty!','custom1');
+```
 
 The createShowQueue function has two optional arguments:
 
