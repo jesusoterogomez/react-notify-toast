@@ -10,9 +10,9 @@ export default class extends React.Component {
 
     static defaultProps = {
         options: {}
-    }
+    };
 
-    componentWillMount() {
+    componentDidMount() {
         mergeOptions(this.props.options);
     }
 
