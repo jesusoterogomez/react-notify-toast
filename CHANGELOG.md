@@ -9,6 +9,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+## [0.5.1] - 2019-10-24
+### Fixed
+- [\#68] Removed deprecated `componentWillMount`
+
 ## [0.5.0] - 2018-05-26
 ### Added
 - [\#58] Support for setting vertical offset by specifying `top` as a default option.
@@ -43,7 +47,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - [\#34] Support for dismissing toasts
 - [\#36] Support for overriding default options through `<Notification/>` component, details in "Overriding Defaults" section of README.
-  
+
 ### Changed
 - Temporarily disables support for custom colors, this will be added as part of options parameter.
 
