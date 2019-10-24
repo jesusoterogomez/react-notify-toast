@@ -1,7 +1,7 @@
 {
   "name": "react-notify-toast",
   "title": "React Notify Toast",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Toast notifications for React.js",
   "keywords": [
     "react",
