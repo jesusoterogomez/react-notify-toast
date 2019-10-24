@@ -39,12 +39,13 @@ class Toast extends React.Component {
             case 'info':
                 contentStyle = assign({}, styles.content, defaults.colors[type]);
                 break;
-            case 'custom':
-                const customStyle = {
-                    backgroundColor: color.background,
-                    color: color.text
-                };
-                contentStyle = assign({}, styles.content, customStyle);
+            case 'custom': {
+                    const customStyle = {
+                        backgroundColor: color.background,
+                        color: color.text
+                    };
+                    contentStyle = assign({}, styles.content, customStyle);
+                }
                 break;
             default:
                 contentStyle = assign({}, styles.content);
