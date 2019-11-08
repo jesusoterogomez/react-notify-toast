@@ -9,12 +9,9 @@ class Stylesheet {
         return {
             container: {
                 position: 'fixed',
-                width: '50%',
-                margin: '0 auto',
-                right: '0px',
-                top: defaults.top,
-                left: '0px',
-                textAlign: 'center',
+                right: defaults.right || '0px',
+                top: defaults.top || '0px',
+                left: defaults.left || '0px',
                 zIndex: defaults.zIndex,
                 pointerEvents: 'none',
                 transition: 'all ' + defaults.animationDuration + 'ms ease',
