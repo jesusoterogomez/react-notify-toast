@@ -108,10 +108,28 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
     };
 }
 
+/** Helper functions */
+function success(text, timeout, color) {
+    return show(text, "success", timeout, color);
+}
+function warn(text, timeout, color) {
+    return show(text, "warning", timeout, color);
+}
+function error(text, timeout, color) {
+    return show(text, "error", timeout, color);
+}
+function info(text, timeout, color) {
+    return show(text, "info", timeout, color);
+}
+
 /* Export notification functions */
 export let notify = {
     show,
     hide,
+    success,
+    warn,
+    error,
+    info,
     createShowQueue
 };
 
