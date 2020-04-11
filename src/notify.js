@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Toast from './components/Toast';
 import Container from './components/Container';
-import {defaults} from './defaults';
+import { defaults } from './defaults';
 
 /* Render React component */
-function renderToast(text, type, timeout, color) {
+function renderToast(text, type, timeout, color, styleObject) {
     let target = document.getElementById(defaults.wrapperId);
-    ReactDOM.render(<Toast text={text} timeout={timeout} type={type} color={color}/>, target);
+    ReactDOM.render(
+        <Toast
+            text={text}
+            timeout={timeout}
+            type={type}
+            color={color}
+            styleObject={styleObject}
+        />,
+        target
+    );
 }
 
 /* Unmount React component */
@@ -15,7 +24,6 @@ function hide() {
     let target = document.getElementById(defaults.wrapperId);
     ReactDOM.unmountComponentAtNode(target);
 }
-
 
 /**
  * Show Animated Toast Message
@@ -31,13 +39,13 @@ function hide() {
  *   style:   {Object} [JS representation of CSS]
  * }
  */
-function show(text, type, timeout, color) {
+function show(text, type, timeout, color, styleObject) {
     if (!document.getElementById(defaults.wrapperId).hasChildNodes()) {
         // Use default timeout if not set.
         let renderTimeout = timeout || defaults.timeout;
 
         // Render Component with Props.
-        renderToast(text, type, renderTimeout, color);
+        renderToast(text, type, renderTimeout, color, styleObject);
 
         if (renderTimeout === -1) {
             return false;
@@ -87,10 +95,21 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
 
         // show will now return true if it is able to send the message,
         // or false if there is an existing message
-        if (show(current.text, current.type, current.timeout, current.color)) {
+        if (
+            show(
+                current.text,
+                current.type,
+                current.timeout,
+                current.color,
+                current.styleObject
+            )
+        ) {
             this.currentRecallDelay = initialRecallDelay;
             if (current.timeout > 0) {
-                setTimeout(() => this.showNotify(), current.timeout + defaults.animationDuration);
+                setTimeout(
+                    () => this.showNotify(),
+                    current.timeout + defaults.animationDuration
+                );
             }
         } else {
             // If message show failed, re-add the current message to the front of the queue
@@ -100,8 +119,14 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         }
     };
 
-    return (text, type = '', timeout = defaults.timeout, color) => {
-        this.msgs.push({text, type, timeout, color});
+    return (
+        text,
+        type = '',
+        timeout = defaults.timeout,
+        color,
+        styleObject = {}
+    ) => {
+        this.msgs.push({ text, type, timeout, color, styleObject });
         if (!this.isNotifying) {
             this.showNotify();
         }
