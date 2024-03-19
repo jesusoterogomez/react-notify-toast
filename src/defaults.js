@@ -1,4 +1,5 @@
 import assign from 'object-assign';
+import stylesheet from './stylesheet';
 
 let defaults = {
     wrapperId: 'notification-wrapper',
@@ -23,7 +24,8 @@ let defaults = {
             color: "#FFFFFF",
             backgroundColor: '#4990E2'
         }
-    }
+    },
+    stylesheet,
 };
 
 function mergeOptions(options) {

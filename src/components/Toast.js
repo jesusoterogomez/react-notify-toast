@@ -19,16 +19,17 @@ class Toast extends React.Component {
         style: PropTypes.oneOfType([
             PropTypes.object,
             PropTypes.bool
-        ])
+        ]),
+        stylesheet: PropTypes.object
     };
 
     state = {
-        containerStyle: stylesheet.styles.container
+        containerStyle: this.props.stylesheet?.container ?? stylesheet.styles.container
     };
 
     getToastStyle() {
-        let {type, color} = this.props;
-        let {styles} = stylesheet;
+        let {type, color, stylesheet: customStyle} = this.props;
+        let {styles} = {...stylesheet, ...customStyle};
         let contentStyle = {};
 
         /* If type is set, merge toast action styles with base */
@@ -56,7 +57,7 @@ class Toast extends React.Component {
     }
 
     animateState() {
-        let {styles} = stylesheet;
+        let {styles} = {...stylesheet, ...customStyle};
 
         // Show
         setTimeout(() => {
@@ -77,7 +78,7 @@ class Toast extends React.Component {
     // Updates the style of the container with styles for a state (hide/show).
     // This triggers animations.
     updateStyle(stateStyle) {
-        let {styles} = stylesheet;
+        let {styles} = {...stylesheet, ...customStyle};
 
         this.setState({containerStyle: assign({}, styles.container, stateStyle)});
     }
