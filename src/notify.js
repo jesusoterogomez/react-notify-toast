@@ -5,9 +5,9 @@ import Container from './components/Container';
 import {defaults} from './defaults';
 
 /* Render React component */
-function renderToast(text, type, timeout, color) {
+function renderToast(text, type, timeout, color, stylesheet = {}) {
     let target = document.getElementById(defaults.wrapperId);
-    ReactDOM.render(<Toast text={text} timeout={timeout} type={type} color={color}/>, target);
+    ReactDOM.render(<Toast text={text} timeout={timeout} type={type} color={color} stylesheet={stylesheet} />, target);
 }
 
 /* Unmount React component */
@@ -31,13 +31,13 @@ function hide() {
  *   style:   {Object} [JS representation of CSS]
  * }
  */
-function show(text, type, timeout, color) {
+function show(text, type, timeout, color, stylesheet) {
     if (!document.getElementById(defaults.wrapperId).hasChildNodes()) {
         // Use default timeout if not set.
         let renderTimeout = timeout || defaults.timeout;
 
         // Render Component with Props.
-        renderToast(text, type, renderTimeout, color);
+        renderToast(text, type, renderTimeout, color, stylesheet);
 
         if (renderTimeout === -1) {
             return false;
@@ -87,7 +87,7 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
 
         // show will now return true if it is able to send the message,
         // or false if there is an existing message
-        if (show(current.text, current.type, current.timeout, current.color)) {
+        if (show(current.text, current.type, current.timeout, current.color, current.stylesheet)) {
             this.currentRecallDelay = initialRecallDelay;
             if (current.timeout > 0) {
                 setTimeout(() => this.showNotify(), current.timeout + defaults.animationDuration);
@@ -100,8 +100,8 @@ function createShowQueue(initialRecallDelay = 500, recallDelayIncrement = 500) {
         }
     };
 
-    return (text, type = '', timeout = defaults.timeout, color) => {
-        this.msgs.push({text, type, timeout, color});
+    return (text, type = '', timeout = defaults.timeout, color, stylesheet) => {
+        this.msgs.push({text, type, timeout, color, stylesheet});
         if (!this.isNotifying) {
             this.showNotify();
         }
